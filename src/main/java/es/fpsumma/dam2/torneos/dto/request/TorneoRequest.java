@@ -1,14 +1,21 @@
 package es.fpsumma.dam2.torneos.dto.request;
 
-
 import jakarta.validation.constraints.Size;
 
+//actualizo TorneoRequest para que coincida con los cambios en la entidad
+
 public record TorneoRequest(
-        @Size(min = 1, max = 255)
-        String nombre,
+    @NotBlank @Size(max = 255) 
+    String nombre,
 
-        String juego,
+    @NotBlank @Size(max = 100) 
+    String juego,
 
-        Integer duracionEnMinutos,
-        Double precio) {
-}
+    @Min(30)
+    @Max(6000)
+    @JsonProperty("duracion_en_minutos")
+    Integer duracionEnMinutos,
+
+    @PositiveOrZero 
+    Double precio
+) {}

@@ -18,16 +18,25 @@ public class TorneoEntity {
 
     private Double precio;
 
+    //lo primero que tenemos que añadir para que pueda funcionar la relación
+    @OneToMany(mappedBy = "torneo", cascade = CascadeType.ALL)
+    private List<ParticipanteEntity> participantes;
+
+    //actualizo el setter de juego
+    public void setJuego(String juego) {
+        this.juego = juego;
+    }
+
     public TorneoEntity() {
     }
 
-    public TorneoEntity(Long id, String nombre, String ciudad, Integer duracionEnMinutos, Double precio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.juego = ciudad;
-        this.duracionEnMinutos = duracionEnMinutos;
-        this.precio = precio;
-    }
+    public TorneoEntity(Long id, String nombre, String juego, Integer duracionEnMinutos, Double precio) {
+    this.id = id;
+    this.nombre = nombre;
+    this.juego = juego; //antes decía 'ciudad', lo edito para que coincida con el atributo
+    this.duracionEnMinutos = duracionEnMinutos;
+    this.precio = precio;
+}
 
     public Long getId() {
         return id;

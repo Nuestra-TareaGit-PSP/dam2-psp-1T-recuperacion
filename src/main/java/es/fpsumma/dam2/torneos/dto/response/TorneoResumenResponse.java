@@ -4,6 +4,4 @@ public record TorneoResumenResponse(
         Long id,
         String nombre,
         String juego
-) {
-
-}
+) {}
