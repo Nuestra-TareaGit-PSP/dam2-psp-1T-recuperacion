@@ -1,6 +1,15 @@
 package es.fpsumma.dam2.torneos.jpa.entity;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "torneos")
@@ -58,10 +67,6 @@ public class TorneoEntity {
         return juego;
     }
 
-    public void setJuego(String ciudad) {
-        this.juego = ciudad;
-    }
-
     public Integer getDuracionEnMinutos() {
         return duracionEnMinutos;
     }
@@ -76,5 +81,9 @@ public class TorneoEntity {
 
     public void setPrecio(Double precio) {
         this.precio = precio;
+    }
+
+    public List<ParticipanteEntity> getParticipantes() {
+        return participantes;
     }
 }

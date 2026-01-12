@@ -1,13 +1,22 @@
 package es.fpsumma.dam2.torneos.service.impl;
 
-import es.fpsumma.dam2.torneos.dto.response.TorneoResponse;
-import es.fpsumma.dam2.torneos.dto.response.TorneoResumenResponse;
-import es.fpsumma.dam2.torneos.jpa.repository.TorneoRepository;
-import es.fpsumma.dam2.torneos.service.TorneoService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import es.fpsumma.dam2.torneos.dto.request.TorneoRequest;
+import es.fpsumma.dam2.torneos.dto.response.ParticipanteResponse;
+import es.fpsumma.dam2.torneos.dto.response.TorneoResponse;
+import es.fpsumma.dam2.torneos.dto.response.TorneoResumenResponse;
+import es.fpsumma.dam2.torneos.exception.TorneoNoEncontradoException;
+import es.fpsumma.dam2.torneos.jpa.entity.TorneoEntity;
+import es.fpsumma.dam2.torneos.jpa.repository.ParticipanteRepository;
+import es.fpsumma.dam2.torneos.jpa.repository.TorneoRepository;
+import es.fpsumma.dam2.torneos.mapper.ParticipanteMapper;
+import es.fpsumma.dam2.torneos.mapper.TorneoMapper;
+import es.fpsumma.dam2.torneos.service.TorneoService;
 
 //actualizo la implementación del servicio TorneoServiceImpl, completando los métodos 
 //y para incluir los nuevos métodos y lógica relacionados con participantes
@@ -16,10 +25,12 @@ import java.util.List;
 public class TorneoServiceImpl implements TorneoService {
 
     private final TorneoRepository torneoRepository;
+    private final ParticipanteRepository participanteRepository;
 
     @Autowired
-    public TorneoServiceImpl(TorneoRepository torneoRepository) {
+    public TorneoServiceImpl(TorneoRepository torneoRepository, ParticipanteRepository participanteRepository) {
         this.torneoRepository = torneoRepository;
+        this.participanteRepository = participanteRepository;
     }
 
     //edito el método listarTorneos para validar los parámetros de ordenación

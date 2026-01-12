@@ -1,9 +1,11 @@
 package es.fpsumma.dam2.torneos.service;
 
+import java.util.List;
+
+import es.fpsumma.dam2.torneos.dto.request.TorneoRequest;
+import es.fpsumma.dam2.torneos.dto.response.ParticipanteResponse;
 import es.fpsumma.dam2.torneos.dto.response.TorneoResponse;
 import es.fpsumma.dam2.torneos.dto.response.TorneoResumenResponse;
-
-import java.util.List;
 
 //actualizo la interfaz TorneoService para incluir los nuevos métodos relacionados con participantes
 
